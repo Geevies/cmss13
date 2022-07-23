@@ -29,9 +29,10 @@
 	H.equip_to_slot_or_del(new /obj/item/reagent_container/food/drinks/flask/marine(H), WEAR_IN_ACCESSORY)
 	H.equip_to_slot_or_del(new /obj/item/facepaint/sniper(H), WEAR_IN_ACCESSORY)
 	H.equip_to_slot_or_del(new /obj/item/storage/box/MRE(H), WEAR_IN_ACCESSORY)
-	H.equip_to_slot_or_del(new /obj/item/device/flashlight(H), WEAR_IN_JACKET)
+	H.equip_to_slot_or_del(new /obj/item/device/flashlight(H), WEAR_J_STORE)
 	H.equip_to_slot_or_del(new /obj/item/tool/crowbar/tactical(H), WEAR_IN_JACKET)
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(H), WEAR_FEET)
+	H.equip_to_slot_or_del(new /obj/item/device/radio(H), WEAR_IN_BACK)
 
 	..()
 
@@ -232,3 +233,6 @@
 	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/revolver/mateba(H), WEAR_IN_BELT)
 	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/revolver/mateba(H), WEAR_IN_BELT)
 	H.equip_to_slot_or_del(new /obj/item/device/binoculars/range/designator(H), WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/clothing/mask/cigarette/cigar(H), WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/tool/lighter/zippo/gold(H), WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/reagent_container/food/drinks/bottle/davenport(H), WEAR_IN_BACK)
