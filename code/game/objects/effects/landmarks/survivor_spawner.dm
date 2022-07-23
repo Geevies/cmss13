@@ -65,7 +65,7 @@
 
 /obj/effect/landmark/survivor_spawner/lv_522/lv522_forecon_major
 	equipment = /datum/equipment_preset/survivor/forecon/major
-	intro_text = list("<h2>You are the commanding officer of the USS Hayut</h2>",\
+	intro_text = list("<h2>You are the commanding officer of the USS Hanyut</h2>",\
 	"<span class='notice'>You are VERY aware of the xenomorph threat</span>")
 	story_text = "This entire operation went shits up when your team investigated the atmospheric processor two weeks ago, from that point on you've been surviving by the skin of your teeth waiting your ships automated distress beacon to be picked up...until now"
 

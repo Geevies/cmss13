@@ -113,39 +113,39 @@
 	soundscape_playlist = SCAPE_PL_LV522_INDOORS
 
 /area/lv522/outdoors/colony_streets/central_streets
-	name = "Central Street West"
+	name = "Central Street - West"
 	icon_state = "west"
 
 /area/lv522/outdoors/colony_streets/east_central_street
-	name = "Central Street East"
+	name = "Central Street - East"
 	icon_state = "east"
 
 /area/lv522/outdoors/colony_streets/south_street
-	name = "Colony Street South"
+	name = "Colony Streets - South"
 	icon_state = "south"
 
 /area/lv522/outdoors/colony_streets/south_east_street
-	name = "Colony Street Southeast"
+	name = "Colony Streets - Southeast"
 	icon_state = "southeast"
 
 /area/lv522/outdoors/colony_streets/south_west_street
-	name = "Colony Street Southwest"
+	name = "Colony Streets - Southwest"
 	icon_state = "southwest"
 
 /area/lv522/outdoors/colony_streets/north_west_street
-	name = "Colony Street Northwest"
+	name = "Colony Streets - Northwest"
 	icon_state = "northwest"
 
 /area/lv522/outdoors/colony_streets/north_east_street
-	name = "Colony Street Northeast"
+	name = "Colony Streets - Northeast"
 	icon_state = "northeast"
 
 /area/lv522/outdoors/colony_streets/north_street
-	name = "Colony Street North"
+	name = "Colony Streets - North"
 	icon_state = "north"
 
 /area/lv522/outdoors/colony_streets/winde
-	name = "Colony Street Northwest"
+	name = "Colony Streets - Northwest"
 	icon_state = "northwest"
 
 //misc indoors areas
@@ -169,6 +169,10 @@
 
 /area/lv522/indoors/lone_buildings/storage_blocks
 	name = "Outdoor Storage"
+	icon_state = "blue"
+
+/area/lv522/indoors/lone_buildings/chunk
+	name = "Chunk 'N Dump"
 	icon_state = "blue"
 
 //A Block
@@ -206,7 +210,7 @@
 	icon_state = "head_quarters"
 
 /area/lv522/indoors/a_block/kitchen
-	name = "A-Block - Kitchen & Dining"
+	name = "A-Block - Kitchen And Dining"
 	icon_state = "kitchen"
 	ceiling = CEILING_GLASS
 
