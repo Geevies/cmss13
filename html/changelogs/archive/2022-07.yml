@@ -345,3 +345,47 @@
       provides an overwatch link for them
   - bugfix: CLF specs now have engi skill level 1 to use the c4 they spawn with, and
       have melee weapons skill level 1 to be in line with USCM specs
+2022-07-23:
+  Sennen, Nanu:
+  - imageadd: New lobby-art brought to you by Sennen also known as Rasta
+  Stan_Albatross, Nauticall:
+  - rscadd: added the autocompressor, a new synthtool that automatically does CPR.
+      Runs on an internal battery, can be attached to people just by clicking on them.
+      Has a high risk of breaking bones if used alongside a person performing CPR.
+      Sprites by Naut.
+  TeDGamer:
+  - balance: Fire damage dealt to carbon humans on fire is based on the fire reagent.
+  stanalbatross:
+  - rscadd: energy weapons, provided they have a charge meter, now tell you how many
+      shots they have left on examine and when you fire them
+  - bugfix: taser overlays now update properly again
+  - bugfix: flashes now visually burn out, added a modern sprite for burnt out flashes
+  - code_imp: rewrote most of the code for flashes. It was really, really bad.
+  - rscadd: flashes now tell you how many flashes they have left when you use them,
+      when you examine them, and they tell you when they recharge a flash
+  - rscadd: you can now only use a flash twice per second.
+2022-07-24:
+  Segrain:
+  - admin: Fixed attack logs for spraying somebody with chemicals.
+2022-07-25:
+  50RemAndCounting:
+  - qol: The bell tower sound effect is not obnoxiously loud anymore.
+  Geevies:
+  - balance: Smartguns now only have a full-auto firing mode, but full-auto no longer
+      causes scatter over time.
+  stanalbatross:
+  - rscadd: added back above-head chat messages when you scream or cry out in pain
+  - rscdel: synths can no longer scream or cry out in pain - let's face it, you guys
+      can't feel it anyways. Fake it if you want.
+  - rscadd: added above-head chat messages for the *medic emote
+  - rscadd: me" custom emotes will now appear in above-head chat
+2022-07-26:
+  Jeser:
+  - code_imp: Mortar doesn't block flames, acid spray, spits and bullets now.
+  - code_imp: Xenos can slash mortar to knock it over.
+  stanalbatross:
+  - balance: feeding a fruit to a queen on ovi who is overwatching a xeno will no
+      longer give the overwatched xeno the fruit's effects.
+  - bugfix: dancer praes can no longer use the impale ability twice in a row, as the
+      cooldown on the ability is now applied earlier
+  - bugfix: the CO SG no longer has an autoejector and no longer can switch off full-auto
