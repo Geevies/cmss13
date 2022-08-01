@@ -60,9 +60,14 @@
 
 	var/message_prompt = "Message:"
 
-	if(AH?.opening_responders && length(AH.ticket_interactions) == 1)
+	var/list/answering_clients = list()
+	if(AH?.marked_client && AH.marked_client != src)
+		answering_clients |= AH.marked_client
+	if(AH?.opening_responders)
+		answering_clients |= AH.opening_responders
+	if(length(answering_clients) && length(AH.ticket_interactions) == 1)
 		SEND_SOUND(src, sound('sound/machines/buzz-sigh.ogg', volume=30))
-		message_prompt += "\n\n**This ticket is already being responded to by: [english_list(AH.opening_responders)]**"
+		message_prompt += "\n\n**This ticket is already being responded to by: [english_list(answering_clients)]**"
 
 	if(AH)
 		message_staff("[key_name_admin(src)] has started replying to [key_name_admin(C, 0, 0)]'s admin help.")

@@ -193,6 +193,8 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 	var/static/ticket_counter = 0
 	/// The list of clients currently responding to the opening ticket before it gets a response
 	var/list/opening_responders
+	/// Client that marked that they're handling the ahelp
+	var/client/marked_client
 	/// Whether this ahelp has sent a webhook or not, and what type
 	var/webhook_sent = WEBHOOK_NONE
 	/// List of player interactions
@@ -369,6 +371,7 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 	. += " (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];ahelp=[ref_src];ahelp_action=icissue'>IC</A>)"
 	. += " (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];ahelp=[ref_src];ahelp_action=close'>CLOSE</A>)"
 	. += " (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];ahelp=[ref_src];ahelp_action=resolve'>RSLVE</A>)"
+	. += " (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];ahelp=[ref_src];ahelp_action=mark'>MARK</A>)"
 
 //private
 /datum/admin_help/proc/LinkedReplyName(ref_src)
@@ -436,7 +439,22 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 	message_staff(msg)
 	log_admin_private(msg)
 	log_ahelp(id, "Reopened", "Reopened by [usr.key]", usr.ckey)
-	TicketPanel() //can only be done from here, so refresh it
+
+/datum/admin_help/proc/Mark()
+	marked_client = usr
+	AddInteraction("<font color='purple'>Marked by [key_name_admin(usr)]</font>", player_message = "A member of staff has marked your ticket!")
+	var/msg = SPAN_ADMINHELP("Ticket [TicketHref("#[id]")] marked by [key_name_admin(usr)].")
+	message_staff(msg)
+	log_admin_private(msg)
+	log_ahelp(id, "Marked", "Marked by [usr.key]", usr.ckey)
+
+/datum/admin_help/proc/Unmark()
+	marked_client = null
+	AddInteraction("<font color='purple'>Unmarked by [key_name_admin(usr)]</font>")
+	var/msg = SPAN_ADMINHELP("Ticket [TicketHref("#[id]")] unmarked by [key_name_admin(usr)].")
+	message_staff(msg)
+	log_admin_private(msg)
+	log_ahelp(id, "Unmarked", "Unmarked by [usr.key]", usr.ckey)
 
 //private
 /datum/admin_help/proc/RemoveActive()
@@ -609,6 +627,10 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 			Resolve()
 		if("reopen")
 			Reopen()
+		if("mark")
+			Mark()
+		if("unmark")
+			Unmark()
 
 /datum/admin_help/proc/player_ticket_panel()
 	var/list/dat = list("<html><head><meta http-equiv='Content-Type' content='text/html; charset=UTF-8'><title>Player Ticket</title></head>")
