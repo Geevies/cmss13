@@ -696,7 +696,7 @@
 		to_world(SPAN_NOTICE("<b><i>The mode is now: [GLOB.master_mode]!</i></b>"))
 		Game() // updates the main game menu
 		SSticker.save_mode(GLOB.master_mode)
-		.(href, list("c_mode"=1))
+		.(href, list("c_mode"=1,"admin_token"=href_list["admin_token"])) // this should be refactored but i lack the mental faculties to do so right now
 
 
 	else if(href_list["f_secret2"])
@@ -709,7 +709,7 @@
 		secret_force_mode = href_list["f_secret2"]
 		message_staff("[key_name_admin(usr)] set the forced secret mode as [secret_force_mode].")
 		Game() // updates the main game menu
-		.(href, list("f_secret"=1))
+		.(href, list("f_secret"=1,"admin_token"=href_list["admin_token"])) // this should be refactored but i lack the mental faculties to do so right now
 
 	else if(href_list["monkeyone"])
 		if(!check_rights(R_SPAWN))	return
