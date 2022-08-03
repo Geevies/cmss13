@@ -371,3 +371,8 @@ GLOBAL_REFERENCE_LIST_INDEXED(all_skills, /datum/skill, skill_name)
 
 // Timelock
 GLOBAL_LIST_EMPTY(timelocks)
+
+
+// Weather global vars
+GLOBAL_LIST_EMPTY(thunder_setup_areas)
+GLOBAL_VAR(weather_rain_effect)

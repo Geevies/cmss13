@@ -39,6 +39,10 @@ var/global/cas_tracking_id_increment = 0	//this var used to assign unique tracki
 
 	var/hardcore = FALSE
 
+	// weather vars
+	var/weather_type = /obj/effect/weather_vfx_holder/rain
+	var/weather_chance = 0
+
 /datum/game_mode/New()
 	..()
 	if(taskbar_icon)
@@ -71,6 +75,7 @@ var/global/cas_tracking_id_increment = 0	//this var used to assign unique tracki
 	setup_structures()
 	if(corpses_to_spawn)
 		generate_corpses()
+	handle_weather()
 	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_MODE_PRESETUP)
 	return 1
 
@@ -110,7 +115,13 @@ var/global/cas_tracking_id_increment = 0	//this var used to assign unique tracki
 
 ///process()
 ///Called by the gameticker
+/datum/game_mode
+	var/process_ticks = 0
+
 /datum/game_mode/process()
+	process_ticks++
+	if(process_ticks % 5 == 0)
+		thunder_strike()
 	return 0
 
 
@@ -247,6 +258,24 @@ var/global/cas_tracking_id_increment = 0	//this var used to assign unique tracki
 			arm_equipment(M, spawner.equip_path, TRUE, FALSE)
 		gamemode_spawn_corpse.Remove(spawner)
 
+
+////////////////////////////
+// Simple Weather System  //
+////////////////////////////
+/datum/game_mode/proc/handle_weather()
+	if(prob(weather_chance))
+		GLOB.weather_rain_effect = new weather_type()
+		for(var/area/A as anything in GLOB.thunder_setup_areas)
+			A.add_thunder()
+
+/datum/game_mode/proc/thunder_strike()
+	playsound_z(SSmapping.levels_by_trait(ZTRAIT_GROUND), 'sound/ambience/thunder1.ogg')
+	for(var/mob/M as anything in GLOB.mob_list)
+		if(M.hud_used)
+			var/obj/screen/plane_master/lighting/lighting = M.hud_used.plane_masters["[LIGHTING_PLANE]"]
+			if(lighting)
+				lighting.alpha = 0
+				animate(lighting, 1 SECONDS, alpha = M.lighting_alpha)
 
 //////////////////////////
 //Reports player logouts//
