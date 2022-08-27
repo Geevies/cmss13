@@ -191,16 +191,7 @@
 /obj/proc/manual_unbuckle(mob/user as mob)
 	if(buckled_mob)
 		if(buckled_mob.buckled == src)
-			if(buckled_mob != user)
-				buckled_mob.visible_message(\
-					SPAN_NOTICE("[buckled_mob.name] was unbuckled by [user.name]!"),\
-					SPAN_NOTICE("You were unbuckled from [src] by [user.name]."),\
-					SPAN_NOTICE("You hear metal clanking."))
-			else
-				buckled_mob.visible_message(\
-					SPAN_NOTICE("[buckled_mob.name] unbuckled \himself!"),\
-					SPAN_NOTICE("You unbuckle yourself from [src]."),\
-					SPAN_NOTICE("You hear metal clanking"))
+			send_unbuckling_message(buckled_mob, user)
 			unbuckle(buckled_mob)
 			add_fingerprint(user)
 			return 1
@@ -270,6 +261,21 @@
 			SPAN_NOTICE("[M] is buckled in to [src] by [user]!"),\
 			SPAN_NOTICE("You are buckled in to [src] by [user]."),\
 			SPAN_NOTICE("You hear metal clanking"))
+
+/obj/proc/send_unbuckling_message(mob/M, mob/user)
+	if(M != user)
+		M.visible_message(\
+			SPAN_NOTICE("[M.name] was unbuckled by [user.name]!"),\
+			SPAN_NOTICE("You were unbuckled from [src] by [user.name]."),\
+			SPAN_NOTICE("You hear metal clanking."))
+	else
+		M.visible_message(\
+			SPAN_NOTICE("[M.name] unbuckled \himself!"),\
+			SPAN_NOTICE("You unbuckle yourself from [src]."),\
+			SPAN_NOTICE("You hear metal clanking"))
+
+/obj/proc/handle_buckle_barrier()
+	return
 
 /obj/Move(NewLoc, direct)
 	. = ..()

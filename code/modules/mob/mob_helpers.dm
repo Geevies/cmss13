@@ -496,3 +496,10 @@ It's fairly easy to fix if dealing with single letters but not so much with comp
 
 /mob/proc/handle_blood_splatter(var/splatter_dir)
 	new /obj/effect/temp_visual/dir_setting/bloodsplatter/human(loc, splatter_dir)
+
+/mob/handle_barriers(var/atom/A, var/list/atom/ignore = list(), pass_flags)
+	var/atom/target = ..()
+	if(target == src)
+		if(buckled?.handle_buckle_barrier())
+			return buckled
+	return target

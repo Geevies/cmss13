@@ -133,21 +133,22 @@
 	return
 
 /mob/proc/click_adjacent(atom/A, var/obj/item/W, mods)
+	var/atom/target = A.handle_barriers(src, null, (PASS_MOB_THRU_HUMAN|PASS_HIGH_OVER))
 	if(W)
-		if(W.attack_speed && !src.contains(A)) //Not being worn or carried in the user's inventory somewhere, including internal storages.
+		if(W.attack_speed && !src.contains(target)) //Not being worn or carried in the user's inventory somewhere, including internal storages.
 			next_move += W.attack_speed
 
-		if(!A.attackby(W, src, mods) && A && !QDELETED(A))
+		if(!target.attackby(W, src, mods) && target && !QDELETED(target))
 			// in case the attackby slept
 			if(!W)
-				UnarmedAttack(A, 1, mods)
+				UnarmedAttack(target, 1, mods)
 				return
 
-			W.afterattack(A, src, 1, mods)
+			W.afterattack(target, src, 1, mods)
 	else
-		if(!isitem(A) && !issurface(A))
+		if(!isitem(target) && !issurface(target))
 			next_move += 4
-		UnarmedAttack(A, 1, mods)
+		UnarmedAttack(target, 1, mods)
 
 
 /*	OLD DESCRIPTION
