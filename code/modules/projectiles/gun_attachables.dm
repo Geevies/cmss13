@@ -396,6 +396,10 @@ Defined in conflicts.dm of the #defines folder.
 		damage_mod = BULLET_DAMAGE_MULT_TIER_6
 	..()
 
+/obj/item/attachable/heavy_barrel/aug
+	name = "DMR barrel"
+	attach_icon = "aug_dmr_barrel_a"
+
 /obj/item/attachable/compensator
 	name = "recoil compensator"
 	desc = "A muzzle attachment that reduces recoil by diverting expelled gasses upwards. \nIncreases accuracy and reduces recoil, at the cost of a small amount of weapon damage."
@@ -972,6 +976,10 @@ Defined in conflicts.dm of the #defines folder.
 	attach_icon = "miniscope_nsg23_a"
 	zoom_offset = 7
 	dynamic_aim_slowdown = SLOWDOWN_ADS_NONE
+
+/obj/item/attachable/scope/mini/aug
+	name = "\improper TODO miniscope"
+	attach_icon = null
 
 /obj/item/attachable/scope/mini_iff
 	name = "B8 Smart-Scope"
@@ -2084,6 +2092,11 @@ Defined in conflicts.dm of the #defines folder.
 					qdel(mag)
 			return
 	to_chat(user, SPAN_WARNING("[src] only accepts shotgun buckshot."))
+
+/obj/item/attachable/attached_gun/shotgun/aug
+	name = "\improper TODO underbarrel shotgun"
+	attach_icon = "aug_mkey_barrel_a"
+	flags_attach_features = NO_FLAGS
 
 /obj/item/attachable/attached_gun/extinguisher
 	name = "HME-12 underbarrel extinguisher"

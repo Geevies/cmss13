@@ -22,22 +22,26 @@
 
 	H.change_real_name(H, random_name)
 
-/datum/equipment_preset/three_world_empire/seaman
-	name = JOB_TWE_SEAMAN
+/datum/equipment_preset/three_world_empire/rifleman
+	name = JOB_TWE_RMC_RIFLEMAN
 	flags = EQUIPMENT_PRESET_EXTRA
 
 	skills = /datum/skills/twe
-	assignment = JOB_TWE_SEAMAN
-	rank = JOB_TWE_SEAMAN
-	role_comm_title = "SN"
+	assignment = JOB_TWE_RMC_RIFLEMAN
+	rank = JOB_TWE_RMC_RIFLEMAN
+	role_comm_title = "RFN"
 	paygrade = "RO1"
 
-/datum/equipment_preset/three_world_empire/seaman/load_gear(mob/living/carbon/human/H)
+/datum/equipment_preset/three_world_empire/rifleman/load_gear(mob/living/carbon/human/H)
 	//face
 	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/TWE, WEAR_L_EAR)
 	//head
 	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/veteran/twe, WEAR_HEAD)
 	//body
+	var/obj/item/clothing/under/marine/veteran/twe/uniform = new(H)
+	var/obj/item/clothing/accessory/storage/holster/holster = new(H)
+	uniform.attach_accessory(H, holster)
+
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/twe, WEAR_BODY)
 	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/faction/twe, WEAR_JACKET)
 	H.equip_to_slot_or_del(new /obj/item/device/binoculars, WEAR_IN_JACKET)
@@ -47,6 +51,16 @@
 	//limbs
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/twe, WEAR_FEET)
 	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran/twe, WEAR_HANDS)
+
+	//primary
+	H.equip_to_slot_or_del(new /obj/item/weapon/gun/rifle/aug, WEAR_J_STORE)
+	// TO-DO implement mag belt
+
+	// secondary
+	new /obj/item/weapon/gun/pistol/calico(holster)
+	new /obj/item/ammo_magazine/smg/calico(holster)
+
+	// TO-DO implement pouches
 
 /datum/equipment_preset/three_world_empire/leading_seaman
 	name = JOB_TWE_LSEAMAN

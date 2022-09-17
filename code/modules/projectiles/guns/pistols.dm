@@ -667,3 +667,24 @@ It is a modified Beretta 93R, and can fire three round burst or single fire. Whe
 	random_spawn_under = list(
 							/obj/item/attachable/lasersight,
 							)
+
+//-------------------------------------------------------
+
+/obj/item/weapon/gun/pistol/calico
+	name = "\improper Calico pistol"
+	desc = "TODO."
+	icon_state = "calico"
+	item_state = "calico"
+
+	fire_sound = 'sound/weapons/gun_glock.ogg'
+	accepted_ammo = list(/obj/item/weapon/gun/smg/calico)
+	current_mag = /obj/item/weapon/gun/smg/calico
+
+/obj/item/weapon/gun/pistol/calico/set_gun_config_values()
+	..()
+	accuracy_mult = BASE_ACCURACY_MULT
+	accuracy_mult_unwielded = BASE_ACCURACY_MULT
+	scatter = SCATTER_AMOUNT_TIER_6
+	burst_scatter_mult = SCATTER_AMOUNT_TIER_6
+	scatter_unwielded = SCATTER_AMOUNT_TIER_6
+	damage_mult = BASE_BULLET_DAMAGE_MULT

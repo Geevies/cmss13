@@ -494,3 +494,28 @@
     if(.)
         click_empty(user)
     return FALSE
+
+//-------------------------------------------------------
+
+/obj/item/weapon/gun/smg/calico
+	name = "\improper Calico SMG"
+	desc = "TODO."
+	icon_state = "calico_smg"
+	item_state = "calico_smg"
+	flags_equip_slot = SLOT_BACK
+	current_mag = /obj/item/ammo_magazine/smg/calico
+	attachable_allowed = list()
+	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER
+
+/obj/item/weapon/gun/smg/calico/set_gun_config_values()
+	..()
+	fire_delay = FIRE_DELAY_TIER_SMG
+	burst_delay = FIRE_DELAY_TIER_SMG
+	burst_amount = BURST_AMOUNT_TIER_3
+	accuracy_mult = BASE_ACCURACY_MULT
+	accuracy_mult_unwielded = BASE_ACCURACY_MULT - HIT_ACCURACY_MULT_TIER_5
+	scatter = SCATTER_AMOUNT_TIER_6
+	burst_scatter_mult = SCATTER_AMOUNT_TIER_6
+	scatter_unwielded = SCATTER_AMOUNT_TIER_4
+	damage_mult = BASE_BULLET_DAMAGE_MULT
+	recoil_unwielded = RECOIL_AMOUNT_TIER_5

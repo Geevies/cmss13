@@ -210,6 +210,18 @@ var/global/list/job_command_roles = JOB_COMMAND_ROLES_LIST
 
 #define TWE_OFFICER_JOB_LIST			list(JOB_TWE_SEAMAN, JOB_TWE_LSEAMAN, JOB_TWE_SO, JOB_TWE_WO, JOB_TWE_CPT, JOB_TWE_ADM, JOB_TWE_GADM, JOB_TWE_ER)
 
+// these need better names
+#define JOB_TWE_RMC_LT					"RMC Lieutenant"
+#define JOB_TWE_RMC_TL					"RMC Team Leader"
+#define JOB_TWE_RMC_MEDIC				"RMC Medic"
+#define JOB_TWE_RMC_MRE_CARRIER			"RMC MRE Carrier"
+#define JOB_TWE_RMC_MUN_CARRIER			"RMC Munitions Carrier"
+#define JOB_TWE_RMC_MG_GUNNER			"RMC MG Gunner"
+#define JOB_TWE_RMC_SPECIALIST			"RMC Specialist"
+#define JOB_TWE_RMC_RIFLEMAN			"RMC Rifleman"
+
+#define TWE_RMC_JOB_LIST				list(JOB_TWE_RMC_LT, JOB_TWE_RMC_TL, JOB_TWE_RMC_MEDIC, JOB_TWE_RMC_MRE_CARRIER, JOB_TWE_RMC_MUN_CARRIER, JOB_TWE_RMC_MG_GUNNER, JOB_TWE_RMC_SPECIALIST, JOB_TWE_RMC_RIFLEMAN)
+
 //-------- PROVOST --------//
 #define JOB_PROVOST_OFFICER				"Provost Officer"
 #define JOB_PROVOST_ENFORCER			"Provost Enforcer"

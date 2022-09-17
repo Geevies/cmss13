@@ -223,6 +223,19 @@
 	bonus_overlay = "type71_ap"
 
 //-------------------------------------------------------
+//RMC F903WE automatic assault rifle
+
+/obj/item/ammo_magazine/rifle/aug
+	name = "\improper F903WE magazine (5.56×45mm)"
+	desc = "A 5.56×45mm detachable box magazine for the F903WE automatic assault rifle."
+	caliber = "5.56×45mm"
+	icon_state = "aug"
+	default_ammo = /datum/ammo/bullet/rifle/aug
+	max_rounds = 30
+	gun_type = /obj/item/weapon/gun/rifle/aug
+	casing_type = /obj/item/ammo_casing/bullet
+
+//-------------------------------------------------------
 //USCM L42A Battle Rifle
 
 /obj/item/ammo_magazine/rifle/l42a

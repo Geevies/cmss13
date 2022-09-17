@@ -1069,6 +1069,12 @@
 	damage = 20
 	penetration = ARMOR_PENETRATION_TIER_10
 
+/datum/ammo/bullet/rifle/aug
+	name = "rifle bullet"
+
+	damage = 30
+	penetration = ARMOR_PENETRATION_TIER_3
+
 /*
 //======
 					Shotgun Ammo

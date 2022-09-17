@@ -1294,3 +1294,62 @@
 	damage_mult = BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_6
 	recoil_unwielded = RECOIL_AMOUNT_TIER_4
 	damage_falloff_mult = 0
+
+//-------------------------------------------------------
+
+
+//-------------------------------------------------------
+//UPP TYPE 71 RIFLE
+
+/obj/item/weapon/gun/rifle/aug
+	name = "\improper RMC F903WE automatic assault rifle"
+	desc = "The RMC F903WE Automatic Assault Rifle (or simply referred to as the F903WE) is an English-made automatic assault rifle. Despite being a quite old weapon and still using gas-operated rotating bolt, the F903WE remains a reliable weapon being efficient on long-range and having a decent firepower. It also possesses limited armor piercing abilities."
+	icon_state = "aug"
+	item_state = "aug"
+
+	fire_sound = 'sound/weapons/gun_type71.ogg'
+	current_mag = /obj/item/ammo_magazine/rifle/aug
+	wield_delay = WIELD_DELAY_FAST
+
+	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER
+	flags_equip_slot = SLOT_BACK
+
+/obj/item/weapon/gun/rifle/aug/set_gun_attachment_offsets()
+	attachable_offset = list("muzzle_x" = 32, "muzzle_y" = 18,"rail_x" = 18, "rail_y" = 23, "under_x" = 20, "under_y" = 13, "stock_x" = 24, "stock_y" = 13)
+
+/obj/item/weapon/gun/rifle/aug/set_gun_config_values()
+	..()
+	fire_delay = FIRE_DELAY_TIER_9
+	burst_amount = BURST_AMOUNT_TIER_4
+	burst_delay = FIRE_DELAY_TIER_8
+	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_4
+	accuracy_mult_unwielded = BASE_ACCURACY_MULT - HIT_ACCURACY_MULT_TIER_7
+	scatter = SCATTER_AMOUNT_TIER_6
+	burst_scatter_mult = SCATTER_AMOUNT_TIER_10
+	scatter_unwielded = SCATTER_AMOUNT_TIER_4
+	damage_mult = BASE_BULLET_DAMAGE_MULT
+	recoil_unwielded = RECOIL_AMOUNT_TIER_3
+
+/obj/item/weapon/gun/rifle/aug/com
+	icon_state = "aug_com"
+	item_state = "aug_com"
+
+/obj/item/weapon/gun/rifle/aug/com/Initialize(mapload, spawn_empty)
+	. = ..()
+	desc += " This model has an integrated vertical grip."
+
+/obj/item/weapon/gun/rifle/aug/mkey
+	icon_state = "aug_mkey"
+	item_state = "aug_mkey"
+	attachable_allowed = list(/obj/item/attachable/attached_gun/shotgun/aug)
+	starting_attachment_types = list(/obj/item/attachable/attached_gun/shotgun/aug)
+
+/obj/item/weapon/gun/rifle/aug/mkey/Initialize(mapload, spawn_empty)
+	. = ..()
+	desc += " This model has an integrated masterkey."
+
+/obj/item/weapon/gun/rifle/aug/dmr
+	icon_state = "aug_mkey"
+	item_state = "aug_mkey"
+	attachable_allowed = list(/obj/item/attachable/scope/mini/aug, /obj/item/attachable/heavy_barrel/aug)
+	starting_attachment_types = list(/obj/item/attachable/scope/mini/aug, /obj/item/attachable/heavy_barrel/aug)

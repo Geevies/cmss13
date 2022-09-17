@@ -167,3 +167,16 @@
 	w_class = SIZE_SMALL
 	max_rounds = 48
 	gun_type = /obj/item/weapon/gun/smg/nailgun
+
+//-------------------------------------------------------
+// Calico pistol and SMG
+
+/obj/item/ammo_magazine/smg/calico
+	name = "\improper TODO"
+	desc = "TODO."
+	caliber = "9×19mm"
+	icon_state = "calico"
+	max_rounds = 50
+	w_class = SIZE_MEDIUM
+	gun_type = /obj/item/weapon/gun/smg/calico
+	default_ammo = /datum/ammo/bullet/smg

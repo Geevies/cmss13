@@ -644,3 +644,11 @@
 /obj/item/weapon/gun/smartgun/clf/Initialize(mapload, ...)
 	. = ..()
 	MD.iff_signal = FACTION_CLF
+
+/obj/item/weapon/gun/smartgun/twe
+	name = "\improper L56A3 Smartgun"
+	desc = "The Weyland-Yutani L56A3 Smartgun was an English-made variant of the American Armat M56 Smartgun.This variant of the M56 Smartgun was developed for Three World Empire's, focusing more on defense, mobility and reliability by reducing the weapon's weight using nano-manufactured metamaterials and increasing the combat harness articulation.\nYou may toggle firing restrictions by using a special action.\nAlt-click it to open the feed cover and allow for reloading."
+
+/obj/item/weapon/gun/smartgun/twe/Initialize(mapload, ...)
+	. = ..()
+	MD.iff_signal = FACTION_TWE
