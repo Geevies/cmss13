@@ -1559,6 +1559,15 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 			else
 				playsound(user, actual_sound, 25, firing_sndfreq)
 
+		var/obj/item/ammo_casing/casing = locate(current_mag.casing_type) in user.loc.contents
+		if(casing)
+			var/previous_casings = casing.current_casings
+			casing.current_casings = min(casing.current_casings + 1, casing.max_casings)
+			if(casing.current_casings != previous_casings)
+				casing.update_icon()
+		else
+			new current_mag.casing_type(user.loc)
+
 	return 1
 
 /obj/item/weapon/gun/proc/simulate_scatter(obj/item/projectile/projectile_to_fire, atom/target, turf/curloc, turf/targloc, mob/user, bullets_fired = 1)

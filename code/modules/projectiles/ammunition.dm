@@ -30,6 +30,8 @@ They're all essentially identical when it comes to getting the job done.
 	var/transfer_handful_amount = 8 //amount of bullets to transfer, 5 for 12g, 9 for 45-70
 	var/handful_state = "bullet" //used for generating handfuls from boxes and setting their sprite when loading/unloading
 
+	var/casing_type
+
 /obj/item/ammo_magazine/Initialize(mapload, spawn_empty)
 	. = ..()
 	GLOB.ammo_magazine_list += src
@@ -289,7 +291,9 @@ Turn() or Shift() as there is virtually no overhead. ~N
 //This does most of the heavy lifting. It updates the icon and name if needed, then changes .dir to simulate new casings.
 /obj/item/ammo_casing/update_icon()
 	if(max_casings >= current_casings)
-		if(current_casings == 2) name += "s" //In case there is more than one.
+		if(current_casings == 2)
+			name += "s" //In case there is more than one.
+			gender = PLURAL
 		if(round((current_casings-1)/8) > current_icon)
 			current_icon++
 			icon_state += "_[current_icon]"
