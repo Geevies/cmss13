@@ -92,6 +92,26 @@
 	else
 		..()
 
+/obj/item/weapon/shield/riot/metal
+	name = "metal riot shield"
+	desc = "A shield adept at blocking blunt objects from connecting with the torso of the shield wielder. This one is heavier than the standard, but offers more defense."
+	icon_state = "metal"
+	item_state = "metal"
+	base_icon_state = "metal"
+	passive_block = 35
+	readied_block = 60
+	readied_slowdown = SLOWDOWN_ARMOR_LIGHT
+
+/obj/item/weapon/shield/riot/ballistic
+	name = "ballistic shield"
+	desc = "A large shield capable of blocking high speed projectiles and many melee attacks, at the cost of being extremely heavy."
+	icon_state = "ballistic"
+	item_state = "ballistic"
+	base_icon_state = "ballistic"
+	passive_block = 45
+	readied_block = 85
+	readied_slowdown = SLOWDOWN_ARMOR_LOWHEAVY
+
 /obj/item/weapon/shield/energy
 	name = "energy combat shield"
 	desc = "A shield capable of stopping most projectile and melee attacks. It can be retracted, expanded, and stored anywhere."
