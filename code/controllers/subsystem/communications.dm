@@ -66,6 +66,8 @@ Frequency range: 1200 to 1600
 Radiochat range: 1441 to 1489 (most devices refuse to be tune to other frequency, even during mapmaking)
 */
 
+var/const/MIN_FREE_FREQ = 1201 // -------------------------------------------------
+
 //Misc channels
 var/const/YAUT_FREQ 	= 1214
 var/const/PMC_FREQ 		= 1235
@@ -87,7 +89,7 @@ var/const/ENG_FREQ 		= 1357
 var/const/SEC_FREQ 		= 1359
 var/const/SUP_FREQ 		= 1354
 var/const/JTAC_FREQ 	= 1358
-var/const/TACTICS_FREQ	= 1356
+var/const/INTEL_FREQ	= 1356
 
 var/const/DS1_FREQ		= 1441
 var/const/DS2_FREQ		= 1443
@@ -101,45 +103,58 @@ var/const/ECHO_FREQ 	= 1456
 var/const/CRYO_FREQ		= 1457
 var/const/MARSOC_FREQ	= 1241
 
+var/const/MIN_FREQ 		= 1460 // ------------------------------------------------------
+
 var/const/PUB_FREQ 		= 1461
+
+var/const/MAX_FREQ 		= 1468 // ------------------------------------------------------
 
 //Civilian channels
 var/const/COLONY_FREQ	= 1469
 
+var/const/MAX_FREE_FREQ = 1599 // -------------------------------------------------
+
 var/list/radiochannels = list(
-	"Response Team" = ERT_FREQ,
-	"Yautja" 		= YAUT_FREQ,
-	"WY" 			= WY_FREQ,
-	"WY PMC" 		= PMC_FREQ,
-	"SpecOps" 		= DTH_FREQ,
-	"UPP" 			= RUS_FREQ,
-	"CLF"			= CLF_FREQ,
-	"TWE"			= TWE_FREQ,
-	"DD"			= DUT_FREQ,
-	"HighCom"		= HC_FREQ,
-	"CCT"			= CCT_FREQ, // HvH JTAC Equiv
+	RADIO_CHANNEL_ERT  			= ERT_FREQ,
+	RADIO_CHANNEL_YAUTJA		= YAUT_FREQ,
+	RADIO_CHANNEL_WY			= WY_FREQ,
+	RADIO_CHANNEL_WY_PMC		= PMC_FREQ,
+	RADIO_CHANNEL_SPECOPS		= DTH_FREQ,
+	RADIO_CHANNEL_UPP			= RUS_FREQ,
+	RADIO_CHANNEL_CLF			= CLF_FREQ,
+	RADIO_CHANNEL_DUTCH_DOZEN	= DUT_FREQ,
+	RADIO_CHANNEL_HIGHCOM		= HC_FREQ,
+	RADIO_CHANNEL_CCT			= CCT_FREQ, // HvH JTAC Equiv
 
-	"Almayer"		= PUB_FREQ,
-	"Command"		= COMM_FREQ,
-	"MedSci"		= MED_FREQ,
-	"Engi"			= ENG_FREQ,
-	"MP"			= SEC_FREQ,
-	"Req"			= SUP_FREQ,
-	"JTAC"			= JTAC_FREQ,
-	"Tactics" 		= TACTICS_FREQ,
+	RADIO_CHANNEL_ALMAYER		= PUB_FREQ,
+	RADIO_CHANNEL_COMMAND		= COMM_FREQ,
+	RADIO_CHANNEL_MEDSCI		= MED_FREQ,
+	RADIO_CHANNEL_ENGI			= ENG_FREQ,
+	RADIO_CHANNEL_MP			= SEC_FREQ,
+	RADIO_CHANNEL_REQ			= SUP_FREQ,
+	RADIO_CHANNEL_JTAC			= JTAC_FREQ,
+	RADIO_CHANNEL_INTEL 		= INTEL_FREQ,
 
-	SQUAD_MARINE_1	= ALPHA_FREQ,
-	SQUAD_MARINE_2	= BRAVO_FREQ,
-	SQUAD_MARINE_3	= CHARLIE_FREQ,
-	SQUAD_MARINE_4	= DELTA_FREQ,
-	SQUAD_MARINE_5	= ECHO_FREQ,
-	SQUAD_MARINE_CRYO		= CRYO_FREQ,
-	SQUAD_MARSOC	= MARSOC_FREQ,
+	SQUAD_MARINE_1				= ALPHA_FREQ,
+	SQUAD_MARINE_2				= BRAVO_FREQ,
+	SQUAD_MARINE_3				= CHARLIE_FREQ,
+	SQUAD_MARINE_4				= DELTA_FREQ,
+	SQUAD_MARINE_5				= ECHO_FREQ,
+	SQUAD_MARINE_CRYO			= CRYO_FREQ,
+	SQUAD_MARSOC				= MARSOC_FREQ,
 
-	"Alamo"			= DS1_FREQ,
-	"Normandy"		= DS2_FREQ,
+	SQUAD_MARINE_1				= ALPHA_FREQ,
+	SQUAD_MARINE_2				= BRAVO_FREQ,
+	SQUAD_MARINE_3				= CHARLIE_FREQ,
+	SQUAD_MARINE_4				= DELTA_FREQ,
+	SQUAD_MARINE_5				= ECHO_FREQ,
+	SQUAD_MARINE_CRYO			= CRYO_FREQ,
+	SQUAD_MARSOC				= MARSOC_FREQ,
 
-	"Colony"		= COLONY_FREQ
+	RADIO_CHANNEL_ALAMO			= DS1_FREQ,
+	RADIO_CHANNEL_NORMANDY 		= DS2_FREQ,
+
+	RADIO_CHANNEL_COLONY		= COLONY_FREQ
 )
 
 // central command channels, i.e deathsquid & response teams
@@ -149,7 +164,7 @@ var/list/radiochannels = list(
 #define ANTAG_FREQS list()
 
 //Depts - used for colors in headset.dm, as well as deciding what the marine comms tower can listen into
-#define DEPT_FREQS list(COMM_FREQ, MED_FREQ, ENG_FREQ, SEC_FREQ, ALPHA_FREQ, BRAVO_FREQ, CHARLIE_FREQ, DELTA_FREQ, ECHO_FREQ, CRYO_FREQ, SUP_FREQ, JTAC_FREQ, TACTICS_FREQ, WY_FREQ)
+#define DEPT_FREQS list(COMM_FREQ, MED_FREQ, ENG_FREQ, SEC_FREQ, ALPHA_FREQ, BRAVO_FREQ, CHARLIE_FREQ, DELTA_FREQ, ECHO_FREQ, CRYO_FREQ, SUP_FREQ, JTAC_FREQ, INTEL_FREQ, WY_FREQ)
 
 #define TRANSMISSION_WIRE	0
 #define TRANSMISSION_RADIO	1
@@ -193,7 +208,7 @@ SUBSYSTEM_DEF(radio)
 		"[MED_FREQ]" = "medradio",
 		"[SUP_FREQ]" = "supradio",
 		"[JTAC_FREQ]" = "jtacradio",
-		"[TACTICS_FREQ]" = "intelradio",
+		"[INTEL_FREQ]" = "intelradio",
 		"[WY_FREQ]" = "wyradio",
 		"[RUS_FREQ]" = "syndradio",
 		"[CLF_FREQ]" = "clfradio",

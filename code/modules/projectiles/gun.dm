@@ -503,19 +503,7 @@
 	for(var/slot in attachments)
 		var/obj/item/attachable/R = attachments[slot]
 		if(!R) continue
-		switch(R.slot)
-			if("rail") 	dat += "It has [icon2html(R)] [R.name] mounted on the top.<br>"
-			if("muzzle") 	dat += "It has [icon2html(R)] [R.name] mounted on the front.<br>"
-			if("stock") 	dat += "It has [icon2html(R)] [R.name] for a stock.<br>"
-			if("under")
-				dat += "It has [icon2html(R)] [R.name]"
-				if(istype(R, /obj/item/attachable/attached_gun/extinguisher))
-					var/obj/item/attachable/attached_gun/extinguisher/E = R
-					dat += " ([E.internal_extinguisher.reagents.total_volume]/[E.internal_extinguisher.max_water])"
-				else if(R.flags_attach_features & ATTACH_WEAPON)
-					dat += " ([R.current_rounds]/[R.max_rounds])"
-				dat += " mounted underneath.<br>"
-			else dat += "It has [icon2html(R)] [R.name] attached.<br>"
+		dat += R.handle_attachment_description()
 
 	if(!(flags_gun_features & (GUN_INTERNAL_MAG|GUN_UNUSUAL_DESIGN))) //Internal mags and unusual guns have their own stuff set.
 		if(current_mag && current_mag.current_rounds > 0)
@@ -696,8 +684,8 @@
 			to_chat(user, SPAN_WARNING("Your other hand can't hold \the [src]!"))
 			return
 
-	flags_item 	   ^= WIELDED
-	name 	   += " (Wielded)"
+	flags_item ^= WIELDED
+	name += " (Wielded)"
 	item_state += "_w"
 	slowdown = initial(slowdown) + aim_slowdown
 	place_offhand(user, initial(name))
@@ -1197,7 +1185,7 @@ and you're good to go.
 		if(!able_to_fire(user))
 			return TRUE
 
-		var/ffl = " (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[user.x];Y=[user.y];Z=[user.z]'>JMP</a>) ([user.client ? "<a href='?priv_msg=[user.client.ckey]'>PM</a>" : "NO CLIENT"])"
+		var/ffl = " (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservecoodjump=1;X=[user.x];Y=[user.y];Z=[user.z]'>JMP</a>) ([user.client ? "<a href='?priv_msg=[user.client.ckey]'>PM</a>" : "NO CLIENT"])"
 
 		var/obj/item/weapon/gun/revolver/current_revolver = src
 		if(istype(current_revolver) && current_revolver.russian_roulette)
@@ -1515,8 +1503,8 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 		gun_scatter += max(0, movement_onehanded_acc_penalty_mult * SCATTER_AMOUNT_TIER_10)
 
 	if(dual_wield) //akimbo firing gives terrible accuracy
-		gun_accuracy_mult = max(0.1, gun_accuracy_mult - 0.1*rand(3,5))
-		gun_scatter += SCATTER_AMOUNT_TIER_4
+		gun_accuracy_mult = max(0.1, gun_accuracy_mult - 0.1*rand(5,7))
+		gun_scatter += SCATTER_AMOUNT_TIER_3
 
 	// Apply any skill-based bonuses to accuracy
 	if(user && user.mind && user.skills)
@@ -1631,7 +1619,7 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 	else
 		total_recoil += recoil_unwielded
 		if(flags_gun_features & GUN_BURST_FIRING)
-			total_recoil += 1
+			total_recoil++
 
 	if(user && user.mind && user.skills)
 		if(user.skills.get_skill_level(SKILL_FIREARMS) == 0) //no training in any firearms

@@ -2,6 +2,15 @@
 //The reaction procs must ALWAYS set src = null, this detaches the proc from the object (the reagent)
 //so that it can continue working when the reagent is deleted while the proc is still active.
 
+GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
+
+/proc/build_name2reagent()
+	. = list()
+	for (var/t in subtypesof(/datum/reagent))
+		var/datum/reagent/R = t
+		if (length(initial(R.name)))
+			.[ckey(initial(R.name))] = t
+
 
 /datum/reagent
 	var/name = "Reagent"
@@ -40,6 +49,7 @@
 	var/burn_sprite = "dynamic"
 	var/burncolor = "#f88818"
 	var/burncolormod = 1
+	var/fire_type = FIRE_VARIANT_DEFAULT //Unique types of fire not modeled by chemfire (1 = Armor Shredding Greenfire). Effects in flamer.dm
 	// Chem generator and research stuff
 	var/chemclass = CHEM_CLASS_NONE //Decides how rare the chem in the generation process
 	var/gen_tier = 0 //Decides the chance of the chem being good during generation
@@ -119,7 +129,7 @@
 /datum/reagent/proc/on_mob_life(mob/living/M, alien, var/delta_time)
 	if(alien == IS_HORROR || !holder)
 		return
-	
+
 	var/list/mods = handle_pre_processing(M)
 
 	if(mods[REAGENT_CANCEL])

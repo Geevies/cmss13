@@ -192,6 +192,10 @@
 				S = pick('sound/weapons/genhit1.ogg', 'sound/weapons/genhit2.ogg', 'sound/weapons/genhit3.ogg')
 			if("pageturn")
 				S = pick('sound/effects/pageturn1.ogg', 'sound/effects/pageturn2.ogg','sound/effects/pageturn3.ogg')
+			if("terminal_button")
+				S = pick('sound/machines/terminal_button01.ogg', 'sound/machines/terminal_button02.ogg', 'sound/machines/terminal_button03.ogg', \
+								'sound/machines/terminal_button04.ogg', 'sound/machines/terminal_button05.ogg', 'sound/machines/terminal_button06.ogg', \
+								'sound/machines/terminal_button07.ogg', 'sound/machines/terminal_button08.ogg')
 			// Weapons/bullets
 			if("ballistic_hit")
 				S = pick('sound/bullets/bullet_impact1.ogg','sound/bullets/bullet_impact2.ogg','sound/bullets/bullet_impact1.ogg','sound/bullets/impact_flesh_1.ogg','sound/bullets/impact_flesh_2.ogg','sound/bullets/impact_flesh_3.ogg','sound/bullets/impact_flesh_4.ogg')
@@ -231,6 +235,9 @@
 				S = pick ('sound/bullets/bulletcasing_shotgun_fall1.ogg')
 			if("gun_nsg23")
 				S = pick('sound/weapons/gun_nsg23_1.ogg','sound/weapons/gun_nsg23_2.ogg')
+			if("gun_pkd")
+				S = pick('sound/weapons/gun_pkd_fire01.ogg','sound/weapons/gun_pkd_fire02.ogg','sound/weapons/gun_pkd_fire03.ogg')
+
 			// Xeno
 			if("acid_hit")
 				S = pick('sound/bullets/acid_impact1.ogg')
@@ -256,6 +263,8 @@
 				S = pick('sound/effects/alien_resin_move1.ogg','sound/effects/alien_resin_move2.ogg')
 			if("alien_talk")
 				S = pick('sound/voice/alien_talk.ogg','sound/voice/alien_talk2.ogg','sound/voice/alien_talk3.ogg')
+			if("hiss_talk")
+				S = pick('sound/voice/hiss2.ogg','sound/voice/hiss3.ogg','sound/voice/hiss4.ogg')
 			if("alien_growl")
 				S = pick('sound/voice/alien_growl1.ogg','sound/voice/alien_growl2.ogg','sound/voice/alien_growl3.ogg')
 			if("alien_hiss")
@@ -296,6 +305,10 @@
 			//misc mobs
 			if("cat_meow")
 				S = pick('sound/voice/cat_meow_1.ogg','sound/voice/cat_meow_2.ogg','sound/voice/cat_meow_3.ogg','sound/voice/cat_meow_4.ogg','sound/voice/cat_meow_5.ogg','sound/voice/cat_meow_6.ogg','sound/voice/cat_meow_7.ogg')
+			if("pred_pain")
+				S = pick('sound/voice/pred_pain1.ogg','sound/voice/pred_pain2.ogg','sound/voice/pred_pain3.ogg','sound/voice/pred_pain4.ogg','sound/voice/pred_pain5.ogg',5;'sound/voice/pred_pain_rare1.ogg')
+			if("clownstep")
+				S = pick('sound/effects/clownstep1.ogg', 'sound/effects/clownstep2.ogg')
 	return S
 
 /client/proc/generate_sound_queues()
@@ -303,11 +316,11 @@
 	set desc = "stress test this bich"
 	set category = "Debug"
 
-	var/ammount = input(usr, "How many sounds to queue?") as num
-	var/range = input(usr, "Range") as num
-	var/x = input(usr, "Center X") as num
-	var/y = input(usr, "Center Y") as num
-	var/z = input(usr, "Z level") as num
+	var/ammount = tgui_input_number(usr, "How many sounds to queue?")
+	var/range = tgui_input_number(usr, "Range")
+	var/x = tgui_input_number(usr, "Center X")
+	var/y = tgui_input_number(usr, "Center Y")
+	var/z = tgui_input_number(usr, "Z level")
 	var/datum/sound_template/S
 	for(var/i = 1, i <= ammount, i++)
 		S = new

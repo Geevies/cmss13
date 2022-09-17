@@ -75,7 +75,7 @@
 	var/list/marines_list = list()	// list of mobs (or name, not always a mob ref) in that squad.
 
 	var/mob/living/carbon/human/overwatch_officer = null	//Who's overwatching this squad?
-	var/supply_cooldown = 0	//Cooldown for supply drops
+	COOLDOWN_DECLARE(next_supplydrop)
 
 	///Text strings, not HTML safe so don't use it without encoding
 	var/primary_objective = null
@@ -711,7 +711,7 @@
 /datum/squad/proc/change_squad_status(mob/living/carbon/human/target)
 	if(target == squad_leader)
 		return		//you can't mark yourself KIA
-	var/choice = tgui_input_list(squad_leader, "Marine status management. M.I.A. for unaccounted for marines, K.I.A. for confirmed unrevivable dead.", "Squad Management", list("Cancel", "Remove status", "M.I.A.", "K.I.A."))
+	var/choice = tgui_input_list(squad_leader, "Marine status management: M.I.A. for missing marines, K.I.A. for confirmed unrevivable dead.", "Squad Management", list("Cancel", "Remove status", "M.I.A.", "K.I.A."))
 	if(target.assigned_squad != src)
 		return		//in case they somehow change squad while SL is choosing
 	if(squad_leader.is_mob_incapacitated() || !hasHUD(squad_leader,"squadleader"))
