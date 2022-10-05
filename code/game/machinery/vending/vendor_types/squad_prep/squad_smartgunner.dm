@@ -59,8 +59,18 @@ GLOBAL_LIST_INIT(cm_vending_gear_smartgun, list(
 	req_access = list(ACCESS_MARINE_SMARTPREP)
 
 /obj/structure/machinery/cm_vending/gear/smartgun/Initialize(mapload, ...)
-	. = ..()
+	..()
 	listed_products = GLOB.cm_vending_gear_smartgun
+	return INITIALIZE_HINT_ROUNDSTART
+
+/obj/structure/machinery/cm_vending/gear/smartgun/LateInitialize()
+	if(IS_DAMAGE_ACTION_MODE)
+		name = replacetext(name, "ColMarTech", "Norcomm")
+		name = replacetext(name, "Smartgunner", "Minigunner")
+		desc = replacetext(desc, "Smartgunner", "Minigunner")
+		vendor_theme = VENDOR_THEME_UPP
+		vendor_role = list(JOB_UPP_SPECIALIST_MINIGUNNER)
+		listed_products = GLOB.gear_path_presets_list[/datum/equipment_preset/upp/minigunner].get_antag_gear_equipment()
 
 //------------CLOTHING VENDOR---------------
 
@@ -110,8 +120,18 @@ GLOBAL_LIST_INIT(cm_vending_clothing_smartgun, list(
 	vendor_role = list(JOB_SQUAD_SMARTGUN)
 
 /obj/structure/machinery/cm_vending/clothing/smartgun/Initialize(mapload, ...)
-	. = ..()
+	..()
 	listed_products = GLOB.cm_vending_clothing_smartgun
+	return INITIALIZE_HINT_ROUNDSTART
+
+/obj/structure/machinery/cm_vending/clothing/smartgun/LateInitialize()
+	if(IS_DAMAGE_ACTION_MODE)
+		name = replacetext(name, "ColMarTech", "Norcomm")
+		name = replacetext(name, "Smartgun", "Minigunner")
+		desc = replacetext(desc, "Smartgun", "Minigunner")
+		vendor_theme = VENDOR_THEME_UPP
+		vendor_role = list(JOB_UPP_SPECIALIST_MINIGUNNER)
+		listed_products = GLOB.gear_path_presets_list[/datum/equipment_preset/upp/minigunner].get_antag_clothing_equipment()
 
 /obj/structure/machinery/cm_vending/clothing/smartgun/alpha
 	squad_tag = SQUAD_MARINE_1

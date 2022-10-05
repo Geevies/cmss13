@@ -301,6 +301,38 @@ datum/preferences/proc/randomize_skin_color()
 				return J.gear_preset_whitelist["[JOB_PREDATOR][J.get_whitelist_status(RoleAuthority.roles_whitelist, owner)]"]
 			return /datum/equipment_preset/yautja/blooded
 
+		// UPP
+		if(JOB_UPP_KOL_OFFICER)
+			return /datum/equipment_preset/upp/officer/kolonel
+		if(JOB_UPP_COMBAT_SYNTH)
+			return /datum/equipment_preset/upp/synth
+		if(JOB_UPP_MAY_OFFICER)
+			return /datum/equipment_preset/upp/officer/major
+		if(JOB_UPP_SRLT_OFFICER)
+			return /datum/equipment_preset/upp/officer/senior
+		if(JOB_UPP_CREWMAN)
+			return /datum/equipment_preset/upp/tank
+		if(JOB_UPP_POLICE)
+			return /datum/equipment_preset/upp/military_police
+		if(JOB_UPP_LT_DOKTOR)
+			return /datum/equipment_preset/upp/doctor
+		if(JOB_UPP_REPRESENTATIVE)
+			return /datum/equipment_preset/upp/representative
+		if(JOB_UPP_LEADER)
+			return /datum/equipment_preset/upp/leader
+		if(JOB_UPP_SPECIALIST_SHOTGUNNER)
+			return /datum/equipment_preset/upp/specialist
+		if(JOB_UPP_SPECIALIST_MINIGUNNER)
+			return /datum/equipment_preset/upp/minigunner
+		if(JOB_UPP_MEDIC)
+			return /datum/equipment_preset/upp/medic
+		if(JOB_UPP_ENGI)
+			return /datum/equipment_preset/upp/sapper
+		if(JOB_UPP_RTO)
+			return /datum/equipment_preset/upp/rto
+		if(JOB_UPP)
+			return /datum/equipment_preset/upp/soldier
+
 	return /datum/equipment_preset/uscm/private_equipped
 
 /datum/preferences/proc/clear_equipment()

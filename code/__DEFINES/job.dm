@@ -153,9 +153,12 @@ var/global/list/job_command_roles = JOB_COMMAND_ROLES_LIST
 //-------- UPP --------//
 #define JOB_UPP							"UPP Private"
 #define JOB_UPP_CONSCRIPT				"UPP Conscript"
+#define JOB_UPP_RTO						"UPP Korporal RadioTech" // todo implement gear preset
 #define JOB_UPP_ENGI					"UPP Korporal Sapper"
 #define JOB_UPP_MEDIC					"UPP Korporal Medic"
 #define JOB_UPP_SPECIALIST				"UPP Serzhant"
+#define JOB_UPP_SPECIALIST_SHOTGUNNER	"UPP Serzhant (Shotgunner)"
+#define JOB_UPP_SPECIALIST_MINIGUNNER	"UPP Serzhant (Minigunner)"
 #define JOB_UPP_LEADER					"UPP Master Serzhant"
 #define JOB_UPP_POLICE					"UPP Politsiya"
 #define JOB_UPP_LT_OFFICER				"UPP Leytenant"
@@ -167,7 +170,7 @@ var/global/list/job_command_roles = JOB_COMMAND_ROLES_LIST
 
 #define JOB_UPP_COMBAT_SYNTH			"UPP Combat Synthetic"
 
-#define UPP_JOB_LIST					list(JOB_UPP, JOB_UPP_ENGI, JOB_UPP_MEDIC, JOB_UPP_SPECIALIST, JOB_UPP_LEADER, JOB_UPP_POLICE, JOB_UPP_LT_OFFICER, JOB_UPP_LT_DOKTOR, JOB_UPP_SRLT_OFFICER, JOB_UPP_KPT_OFFICER, JOB_UPP_KOL_OFFICER, JOB_UPP_COMBAT_SYNTH)
+#define UPP_JOB_LIST					list(JOB_UPP, JOB_UPP_ENGI, JOB_UPP_MEDIC, JOB_UPP_SPECIALIST, JOB_UPP_SPECIALIST_SHOTGUNNER, JOB_UPP_SPECIALIST_MINIGUNNER, JOB_UPP_LEADER, JOB_UPP_POLICE, JOB_UPP_LT_OFFICER, JOB_UPP_LT_DOKTOR, JOB_UPP_SRLT_OFFICER, JOB_UPP_KPT_OFFICER, JOB_UPP_KOL_OFFICER, JOB_UPP_COMBAT_SYNTH)
 
 #define JOB_UPP_COMMANDO				"UPP Junior Kommando"
 #define JOB_UPP_COMMANDO_MEDIC			"UPP 2nd Kommando"

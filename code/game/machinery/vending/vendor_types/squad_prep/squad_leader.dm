@@ -93,8 +93,16 @@ GLOBAL_LIST_INIT(cm_vending_gear_leader, list(
 	req_access = list(ACCESS_MARINE_LEADER)
 
 /obj/structure/machinery/cm_vending/gear/leader/Initialize(mapload, ...)
-	. = ..()
+	..()
 	listed_products = GLOB.cm_vending_gear_leader
+	return INITIALIZE_HINT_ROUNDSTART
+
+/obj/structure/machinery/cm_vending/gear/leader/LateInitialize()
+	if(IS_DAMAGE_ACTION_MODE)
+		name = replacetext(name, "ColMarTech", "Norcomm")
+		vendor_theme = VENDOR_THEME_UPP
+		vendor_role = list(JOB_UPP_LEADER)
+		listed_products = GLOB.gear_path_presets_list[/datum/equipment_preset/upp/leader].get_antag_gear_equipment()
 
 //------------CLOTHING VENDOR---------------
 
@@ -159,8 +167,16 @@ GLOBAL_LIST_INIT(cm_vending_clothing_leader, list(
 	vendor_role = list(JOB_SQUAD_LEADER)
 
 /obj/structure/machinery/cm_vending/clothing/leader/Initialize(mapload, ...)
-	. = ..()
+	..()
 	listed_products = GLOB.cm_vending_clothing_leader
+	return INITIALIZE_HINT_ROUNDSTART
+
+/obj/structure/machinery/cm_vending/clothing/leader/LateInitialize()
+	if(IS_DAMAGE_ACTION_MODE)
+		name = replacetext(name, "ColMarTech", "Norcomm")
+		vendor_theme = VENDOR_THEME_UPP
+		vendor_role = list(JOB_UPP_LEADER)
+		listed_products = GLOB.gear_path_presets_list[/datum/equipment_preset/upp/leader].get_antag_clothing_equipment()
 
 /obj/structure/machinery/cm_vending/clothing/leader/alpha
 	squad_tag = SQUAD_MARINE_1

@@ -66,8 +66,16 @@ GLOBAL_LIST_INIT(cm_vending_gear_rto, list(
 	vendor_role = list(JOB_SQUAD_RTO)
 
 /obj/structure/machinery/cm_vending/gear/rto/Initialize(mapload, ...)
-	. = ..()
+	..()
 	listed_products = GLOB.cm_vending_gear_rto
+	return INITIALIZE_HINT_ROUNDSTART
+
+/obj/structure/machinery/cm_vending/gear/rto/LateInitialize()
+	if(IS_DAMAGE_ACTION_MODE)
+		name = replacetext(name, "ColMarTech", "Norcomm")
+		vendor_theme = VENDOR_THEME_UPP
+		vendor_role = list(JOB_UPP_RTO)
+		listed_products = GLOB.gear_path_presets_list[/datum/equipment_preset/upp/rto].get_antag_gear_equipment()
 
 //------------CLOTHING VENDOR---------------
 
@@ -132,8 +140,16 @@ GLOBAL_LIST_INIT(cm_vending_clothing_rto, list(
 
 
 /obj/structure/machinery/cm_vending/clothing/rto/Initialize(mapload, ...)
-	. = ..()
+	..()
 	listed_products = GLOB.cm_vending_clothing_rto
+	return INITIALIZE_HINT_ROUNDSTART
+
+/obj/structure/machinery/cm_vending/clothing/rto/LateInitialize()
+	if(IS_DAMAGE_ACTION_MODE)
+		name = replacetext(name, "ColMarTech", "Norcomm")
+		vendor_theme = VENDOR_THEME_UPP
+		vendor_role = list(JOB_UPP_RTO)
+		listed_products = GLOB.gear_path_presets_list[/datum/equipment_preset/upp/rto].get_antag_clothing_equipment()
 
 /obj/structure/machinery/cm_vending/clothing/rto/alpha
 	squad_tag = SQUAD_MARINE_1
@@ -184,6 +200,19 @@ GLOBAL_LIST_INIT(cm_vending_clothing_rto, list(
 		/obj/item/ammo_magazine/pistol/hp,
 		/obj/item/ammo_magazine/pistol/ap,
 		/obj/item/ammo_magazine/pistol/ap,
+		/obj/item/storage/belt/gun/m4a3
+	)
+
+/obj/effect/essentials_set/rto/upp
+	spawned_gear_list = list(
+		/obj/item/weapon/gun/pistol/skorpion/upp,
+		/obj/item/device/binoculars/range/designator,
+		/obj/item/storage/box/m94/signal,
+		/obj/item/storage/box/m94/signal,
+		/obj/item/ammo_magazine/pistol/skorpion,
+		/obj/item/ammo_magazine/pistol/skorpion,
+		/obj/item/ammo_magazine/pistol/skorpion,
+		/obj/item/ammo_magazine/pistol/skorpion,
 		/obj/item/storage/belt/gun/m4a3
 	)
 

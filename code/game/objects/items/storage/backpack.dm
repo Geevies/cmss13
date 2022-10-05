@@ -368,6 +368,8 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 	has_gamemode_skin = FALSE
 	actions_types = list(/datum/action/item_action/rto_pack/use_phone)
 
+	var/phone_category = "RTO"
+
 	flags_item = ITEM_OVERRIDE_NORTHFACE
 
 	uniform_restricted = list(/obj/item/clothing/under/marine/rto)
@@ -398,7 +400,7 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 	. = ..()
 	internal_transmitter = new(src)
 	internal_transmitter.relay_obj = src
-	internal_transmitter.phone_category = "RTO"
+	internal_transmitter.phone_category = phone_category
 	internal_transmitter.enabled = FALSE
 	RegisterSignal(internal_transmitter, COMSIG_TRANSMITTER_UPDATE_ICON, .proc/check_for_ringing)
 	GLOB.radio_packs += src
@@ -479,11 +481,13 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 	name = "\improper USCM Small Radio Telephone Pack"
 	max_storage_space = 10
 
+	phone_category = "Marine"
+
 	uniform_restricted = null
 
-/obj/item/storage/backpack/marine/satchel/rto/small/Initialize()
-	. = ..()
-	internal_transmitter.phone_category = "Marine"
+/obj/item/storage/backpack/marine/satchel/rto/small/upp
+	name = "\improper UPP Radio Telephone Pack"
+	phone_category = "RadioTech"
 
 /obj/item/storage/backpack/marine/smock
 	name = "\improper M3 sniper's smock"

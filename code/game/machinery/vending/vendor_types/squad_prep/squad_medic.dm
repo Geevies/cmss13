@@ -106,8 +106,16 @@ GLOBAL_LIST_INIT(cm_vending_gear_medic, list(
 	req_access = list(ACCESS_MARINE_MEDPREP)
 
 /obj/structure/machinery/cm_vending/gear/medic/Initialize(mapload, ...)
-	. = ..()
+	..()
 	listed_products = GLOB.cm_vending_gear_medic
+	return INITIALIZE_HINT_ROUNDSTART
+
+/obj/structure/machinery/cm_vending/gear/medic/LateInitialize()
+	if(IS_DAMAGE_ACTION_MODE)
+		name = replacetext(name, "ColMarTech", "Norcomm")
+		vendor_theme = VENDOR_THEME_UPP
+		vendor_role = list(JOB_UPP_MEDIC)
+		listed_products = GLOB.gear_path_presets_list[/datum/equipment_preset/upp/medic].get_antag_gear_equipment()
 
 //------------CLOTHING VENDOR---------------
 
@@ -182,8 +190,16 @@ GLOBAL_LIST_INIT(cm_vending_clothing_medic, list(
 	vendor_role = list(JOB_SQUAD_MEDIC)
 
 /obj/structure/machinery/cm_vending/clothing/medic/Initialize(mapload, ...)
-	. = ..()
+	..()
 	listed_products = GLOB.cm_vending_clothing_medic
+	return INITIALIZE_HINT_ROUNDSTART
+
+/obj/structure/machinery/cm_vending/clothing/medic/LateInitialize()
+	if(IS_DAMAGE_ACTION_MODE)
+		name = replacetext(name, "ColMarTech", "Norcomm")
+		vendor_theme = VENDOR_THEME_UPP
+		vendor_role = list(JOB_UPP_MEDIC)
+		listed_products = GLOB.gear_path_presets_list[/datum/equipment_preset/upp/medic].get_antag_clothing_equipment()
 
 /obj/structure/machinery/cm_vending/clothing/medic/alpha
 	squad_tag = SQUAD_MARINE_1

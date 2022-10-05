@@ -15,7 +15,7 @@
 /datum/job/marine/leader/upp
 	title = JOB_UPP_LEADER
 	flags_startup_parameters = ROLE_ADD_TO_SQUAD
-	gear_preset = /datum/equipment_preset/upp/leader
+	gear_preset = /datum/equipment_preset/upp/leader/cryo
 
 AddTimelock(/datum/job/marine/leader, list(
 	JOB_SQUAD_ROLES = 10 HOURS,

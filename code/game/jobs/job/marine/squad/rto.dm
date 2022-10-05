@@ -11,6 +11,11 @@
 	. = ..()
 	H.important_radio_channels += JTAC_FREQ
 
+/datum/job/marine/rto/upp
+	title = JOB_UPP_RTO
+	flags_startup_parameters = ROLE_ADD_TO_SQUAD
+	gear_preset = /datum/equipment_preset/upp/rto/cryo
+
 AddTimelock(/datum/job/marine/rto, list(
 	JOB_SQUAD_ROLES = 8 HOURS
 ))

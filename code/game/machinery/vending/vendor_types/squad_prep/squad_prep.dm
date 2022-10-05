@@ -206,8 +206,16 @@ GLOBAL_LIST_INIT(cm_vending_clothing_marine, list(
 	vendor_role = list(JOB_SQUAD_MARINE)
 
 /obj/structure/machinery/cm_vending/clothing/marine/Initialize(mapload, ...)
-	. = ..()
+	..()
 	listed_products = GLOB.cm_vending_clothing_marine
+	return INITIALIZE_HINT_ROUNDSTART
+
+/obj/structure/machinery/cm_vending/clothing/marine/LateInitialize()
+	if(IS_DAMAGE_ACTION_MODE)
+		name = replacetext(name, "ColMarTech", "Norcomm")
+		vendor_theme = VENDOR_THEME_UPP
+		vendor_role = list(JOB_UPP)
+		listed_products = GLOB.gear_path_presets_list[/datum/equipment_preset/upp/soldier].get_antag_clothing_equipment()
 
 /obj/structure/machinery/cm_vending/clothing/marine/alpha
 	squad_tag = SQUAD_MARINE_1

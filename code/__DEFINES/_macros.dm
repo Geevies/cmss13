@@ -10,3 +10,5 @@
 #define	protected_by_pylon(protection, T) (T.get_pylon_protection_level() >= protection)
 
 #define CAN_PICKUP(M, A)	(ishuman(M) && A.Adjacent(M) && !M.is_mob_incapacitated() && M.stat == CONSCIOUS)
+
+#define IS_DAMAGE_ACTION_MODE	(ispath(SSticker.mode.type, /datum/game_mode/colonialmarines/upp))

@@ -19,6 +19,7 @@
 		/datum/job/logistics/cargo/upp = JOB_CARGO_TECH,
 		/datum/job/civilian/liaison/upp = JOB_CORPORATE_LIAISON,
 		/datum/job/marine/leader/upp = JOB_SQUAD_LEADER,
+		/datum/job/marine/rto/upp = JOB_SQUAD_RTO,
 		/datum/job/marine/specialist/upp = JOB_SQUAD_SPECIALIST,
 		/datum/job/marine/smartgunner/upp = JOB_SQUAD_SMARTGUN,
 		/datum/job/marine/medic/upp = JOB_SQUAD_MEDIC,

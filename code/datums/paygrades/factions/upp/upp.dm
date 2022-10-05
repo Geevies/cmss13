@@ -27,6 +27,11 @@
 	name = "Korporal Sapper"
 	prefix = "Kpl."
 
+/datum/paygrade/upp/ue3r
+	paygrade = "UE3R"
+	name = "Korporal RadioTech"
+	prefix = "Kpl."
+
 /datum/paygrade/upp/ue4
 	paygrade = "UE4"
 	name = "Junior Serzhant"

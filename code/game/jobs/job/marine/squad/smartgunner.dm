@@ -29,9 +29,9 @@
 	gear_preset = /datum/equipment_preset/wo/marine/sg
 
 /datum/job/marine/smartgunner/upp
-	title = "UPP Serzhant (Minigunner)"
+	title = JOB_UPP_SPECIALIST_MINIGUNNER
 	flags_startup_parameters = ROLE_ADD_TO_SQUAD
-	gear_preset = /datum/equipment_preset/wo/marine/sg
+	gear_preset = /datum/equipment_preset/upp/minigunner/cryo
 
 AddTimelock(/datum/job/marine/smartgunner, list(
 	JOB_SQUAD_ROLES = 5 HOURS
