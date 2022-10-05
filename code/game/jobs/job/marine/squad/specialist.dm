@@ -29,6 +29,11 @@
 	flags_startup_parameters = ROLE_ADD_TO_SQUAD
 	gear_preset = /datum/equipment_preset/wo/marine/spec
 
+/datum/job/marine/specialist/upp
+	title = "UPP Serzhant (Shotgunner)"
+	flags_startup_parameters = ROLE_ADD_TO_SQUAD
+	gear_preset = /datum/equipment_preset/upp/specialist
+
 AddTimelock(/datum/job/marine/specialist, list(
 	JOB_SQUAD_ROLES = 5 HOURS
 ))

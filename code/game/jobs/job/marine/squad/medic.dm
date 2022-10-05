@@ -32,6 +32,11 @@
 	flags_startup_parameters = ROLE_ADD_TO_SQUAD
 	gear_preset = /datum/equipment_preset/wo/marine/medic
 
+/datum/job/marine/medic/upp
+	title = JOB_UPP_MEDIC
+	flags_startup_parameters = ROLE_ADD_TO_SQUAD
+	gear_preset = /datum/equipment_preset/upp/medic
+
 AddTimelock(/datum/job/marine/medic, list(
 	JOB_MEDIC_ROLES = 1 HOURS,
 	JOB_SQUAD_ROLES = 1 HOURS

@@ -13,6 +13,11 @@
 	flags_startup_parameters = ROLE_ADD_TO_SQUAD
 	gear_preset = /datum/equipment_preset/wo/marine/pfc
 
+/datum/job/marine/standard/upp
+	title = JOB_UPP
+	flags_startup_parameters = ROLE_ADD_TO_SQUAD
+	gear_preset = /datum/equipment_preset/upp/soldier
+
 /obj/effect/landmark/start/marine
 	name = JOB_SQUAD_MARINE
 	icon_state = "marine_spawn"

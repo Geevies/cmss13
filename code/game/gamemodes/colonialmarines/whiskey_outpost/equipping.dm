@@ -22,7 +22,6 @@ Stay alive, and Godspeed, commander!"}
 			marine_announcement("All forces, Ground Commander [H.real_name] is in command!")
 
 
-
 //*************************************
 //----------------SYNTHETIC-------------
 //*************************************/

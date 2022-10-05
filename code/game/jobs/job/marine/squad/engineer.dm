@@ -32,6 +32,11 @@
 	flags_startup_parameters = ROLE_ADD_TO_SQUAD
 	gear_preset = /datum/equipment_preset/wo/marine/engineer
 
+/datum/job/marine/engineer/upp
+	title = JOB_UPP_ENGI
+	flags_startup_parameters = ROLE_ADD_TO_SQUAD
+	gear_preset = /datum/equipment_preset/upp/sapper
+
 AddTimelock(/datum/job/marine/engineer, list(
 	JOB_SQUAD_ROLES = 1 HOURS
 ))
